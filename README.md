@@ -7,9 +7,10 @@
 
 2. Sliva rRNAs. https://www.arb-silva.de/download/arb-files/
 
-This SSU dataset is now the recommended reference database. It is based on the Ref dataset with a 99% criterion applied to remove redundant sequences using the Opens external link in new windowvsearch tool. Sequences from cultivated species have been preserved independent from prior filtering. The final dataset contains 510,508 sequences and can be used as a representative dataset for phylogenetic analysis and classification. 
+  2.1 SSU NR99 (large ribosomal subunit)
+  `This SSU dataset is now the recommended reference database. It is based on the Ref dataset with a 99% criterion applied to remove redundant sequences using the Opens external link in new windowvsearch tool. Sequences from cultivated species have been preserved independent from prior filtering. The final dataset contains 510,508 sequences and can be used as a representative dataset for phylogenetic analysis and classification. `
 
-This SSU dataset containing all high quality, aligned 16S/18S ribosomal RNA sequences with a minimum length of 1200 bases for Bacteria and Eukarya and 900 bases for Archaea
+  2.2 SSU  This SSU dataset containing all high quality, aligned 16S/18S ribosomal RNA sequences with a minimum length of 1200 bases for Bacteria and Eukarya and 900 bases for Archaea
 
 It is based on the Ref dataset with a 99% criterion applied to remove redundant sequences using the Opens external link in new windowvsearch tool. Sequences from cultivated species have been preserved independent from prior filtering. The final dataset contains 95,286 sequences and can be used as a representative dataset for phylogenetic analysis and classification. 
 
