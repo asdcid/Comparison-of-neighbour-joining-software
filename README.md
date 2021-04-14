@@ -5,7 +5,7 @@
 ## Data
 1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
 
-2. Sliva rRNAs. https://www.arb-silva.de/download/arb-files/
+2. Sliva rRNAs (138.1). https://www.arb-silva.de/download/arb-files/
 
  - SSU NR99 (small ribosomal subunit): 510,508 sequences, `SILVA_138.1_LSURef_NR99_tax_silva_full_align_trunc.fasta.gz`
  ```
