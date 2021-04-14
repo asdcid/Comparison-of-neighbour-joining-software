@@ -1,8 +1,9 @@
-# Compare
+# A plan for benchmarking decentTree
+
 
 1. subread < total reads, if subread > total reads, output all reads
 
-## 1. Data
+## 1. Original datasets
 1.1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
 
 1.2. Sliva rRNAs (138.1). https://www.arb-silva.de/download/arb-files/
@@ -38,3 +39,7 @@
   - FastME
   - Fasttree
   - BioNJ (cannot install)
+
+ 2.2 Subsample datasets (fasta alignments and IQ-TREE distance matrix)
+ 
+ 
