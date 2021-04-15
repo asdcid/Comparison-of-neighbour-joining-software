@@ -50,7 +50,7 @@
  2.2 Subsample datasets (fasta alignments and IQ-TREE distance matrix)
  
   - decenttree (>5000 reads, run out the memory (1TB))
-  - quicktree ()
+  - quicktree (1 threads, Stockholm format)
   - RapidNJ
   - FastME (although the manual said it allow , but it is not)
   - Fasttree ()
