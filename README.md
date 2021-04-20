@@ -2,7 +2,8 @@
 
 
 1. subread < total reads, if subread > total reads, output all reads
-
+2. the alignment name must not contain ':'
+3. the new software name must be the same as config file and rules
 ## Requirments
   **Script required**
   - timeout (https://raw.githubusercontent.com/pshved/timeout/master/timeout)
