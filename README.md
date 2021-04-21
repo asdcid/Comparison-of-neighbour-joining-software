@@ -104,6 +104,9 @@ the output files are:
 
 ***Add new software***
 
+If you want to add new software to this snakemake pipeline, you need to change `config.yaml` and `snakefile`.
+
+**`snakefile`**
 - New software with *multiple* threads: add it into `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. 
  
 Such as 
