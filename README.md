@@ -8,16 +8,18 @@
 5. set path system export PATH="":$PATH, including the timeout
 ## Requirments
   **Script required**
-  - timeout (https://raw.githubusercontent.com/pshved/timeout/master/timeout)
+  - timeout (https://raw.githubusercontent.com/pshved/timeout/master/timeout, for the CPU time and memory usage limitation)
   - pigz
-
+  - Snakemake v5.13.0
+  - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
+  
   **Software to compare**
   - decenttree
   - quicktree
   - RapidNJ
   - FastME
   - Fasttree
-  - BioNJ (cannot install)
+  - BioNJ 
 
 ## 1. Original datasets
 1.1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
