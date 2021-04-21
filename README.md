@@ -30,13 +30,15 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 ```
 
 |  Software | MSA | Distance matrix |
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- |
 | Decenttree  | .fasta(.gz)  | Yes |
 | Fasttree  | .fasta, .phylip  | Yes |
 | RapidNJ  | .sth, .phylip  | Yes |
 | FastME  | ?  | Yes |
 | BioNJ  | No  | Yes |
 | quicktree  | .sth  | Yes |
+
+
 
 >MSA: Multiple sequence alignment; .sth: Stockholm format. 
 
