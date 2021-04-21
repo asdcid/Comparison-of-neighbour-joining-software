@@ -1,11 +1,12 @@
 # A plan for benchmarking decentTree
-
+Compare different the running time, memory usage and accuracy of different neighbor-joining software with Snakemake.
 
 1. subread < total reads, if subread > total reads, output all reads
 2. the alignment name must not contain ':'
 3. the new software name must be the same as config file and rules
 4. converted file format (.sth, dist)
 5. set path system export PATH="":$PATH, including the timeout
+
 ## Requirments
   **Script required**
   - timeout (https://raw.githubusercontent.com/pshved/timeout/master/timeout, for the CPU time and memory usage limitation)
@@ -20,6 +21,19 @@
   - FastME
   - Fasttree
   - BioNJ 
+
+## Usage
+Download the pipeline
+```
+https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
+```
+
+Run
+
+```
+# $NUM is the threads you want to use
+snakemake --cores $NUM
+```
 
 ## 1. Original datasets
 1.1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
