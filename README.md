@@ -47,14 +47,14 @@ MEMLIMIT : 1000000000
 TIMELIMIT : 43200
 
 
-# How many threads you want to use to compare
+# How many threads you want to use to compare, can be only one value. For example, only use 5 threads: [5]
 THREADS : [64, 32, 16, 8, 4, 2, 1]
 
 
-# The software you want to use to compare, but can only use single thread
+# The software you want to use to compare, but can only use single thread. Can be empty []
 SOFTWARE_SINGLE_THREAD : ['bionj', 'quicktree']
 
-# The software you want to use to compare, but can use multiple threads.
+# The software you want to use to compare, but can use multiple threads. Can be empty []
 SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'rapidnj', 'fastme', 'fasttree']
 
 ```
@@ -95,8 +95,23 @@ the output files are:
 
 
 
-6. Add new software
-asdfasd 3. the new software name must be the same as config file and rules
+6. Add new software or remove the default software
+**Add new software**
+ 
+
+The name should be the same in rule (`snakefile`) and in SOFTWARE_SINGLE/MULTIPLE_THREAD (`config.yaml`)
+
+**Remove existing software**
+If you don't want to compare some software, just remove them from `SOFTWARE_SINGLE_THREAD` or `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. 
+
+Don't need to change the `snakefile`.
+
+For example, if you only want to run `decenttree`, just set the `SOFTWARE` in `config.yaml`:
+```
+SOFTWARE_SINGLE_THREAD : []
+SOFTWARE_MULTIPLE_THREADS : ['decenttree']
+```
+
 
 
 **NOTE**
@@ -104,8 +119,7 @@ asdfasd 3. the new software name must be the same as config file and rules
 ```
 export PATH="/place/with/the/file":$PATH
 ```
->2. The name of input alignment file should not contain ':'
-
+>2. The name of input alignment file should not contain ':'.
  
 
 
