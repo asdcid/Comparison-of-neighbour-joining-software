@@ -1,15 +1,9 @@
 # A plan for benchmarking decentTree
-Compare different the running time, memory usage and accuracy of different neighbor-joining software with Snakemake.
-
-1. subread < total reads, if subread > total reads, output all reads
-
-3. the new software name must be the same as config file and rules
-4. converted file format (.sth, dist)
-5. set path system export PATH="":$PATH, including the timeout
+Compare the running time, memory usage and accuracy of different neighbor-joining software with different input alignments and threads.
 
 ## Requirments
   **Script required**
-  - timeout (https://raw.githubusercontent.com/pshved/timeout/master/timeout, for the CPU time and memory usage limitation)
+  - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
   - pigz
   - Snakemake v5.13.0
   - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
@@ -28,7 +22,14 @@ Compare different the running time, memory usage and accuracy of different neigh
 https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 ```
 
-2. Modify the configure file `config.yaml`
+2. Input format
+```
+1. subread < total reads, if subread > total reads, output all reads
+
+4. converted file format (.sth, dist)
+```
+
+3. Modify the configure file `config.yaml`
 
 ```
 # The path of directory including the input alignments (support MSA in .fasta, .sth and distance matrix format)
@@ -58,15 +59,31 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'rapidnj', 'fastme', 'fasttree']
 
 ```
 
-3. Run
+4. Run
 ```
 # $NUM is the threads you want to use, should not be less than the maximum THREADS in `config.yaml`.
 snakemake --cores $NUM
 ```
 
-4. Output files
+5. Output files
+This pipeline outputs three files of each {software}:{threads}:{alignment} combination
 
-5. Add new software
+```
+# The output of timeout and error message during the running. 
+# Exceed the CPU time limitation : TIMEOUT 
+# Exceed the memory usage        : MEM 
+# Not exceeding time and memory  : FINISH
+{software}:{threads}:{alignment}.errorLog
+# The output of /usr/bin/time, including the CPU times, memory usage
+{software}:{threads}:{alignment}.timeLog
+# The output tree file
+{software}:{threads}:{alignment}.newick
+```
+
+
+
+6. Add new software
+asdfasd 3. the new software name must be the same as config file and rules
 
 
 **NOTE**
