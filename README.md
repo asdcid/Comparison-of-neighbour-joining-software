@@ -106,7 +106,8 @@ the output files are:
 
 If you want to add new software to this snakemake pipeline, you need to change `config.yaml` and `snakefile`.
 
-**`snakefile`**
+**A. `config.yaml`**
+
 - New software with *multiple* threads: add it into `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. 
  
 Such as 
@@ -118,7 +119,7 @@ Such as
 
 If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run multiple times (depending on how many threads combination you set in `THREADS`).
 
-
+**B. `snakefile`**
 
 The name should be the same in rule (`snakefile`) and in SOFTWARE_SINGLE/MULTIPLE_THREAD (`config.yaml`)
 
