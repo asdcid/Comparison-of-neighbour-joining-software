@@ -29,6 +29,17 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 4. converted file format (.sth, dist)
 ```
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Decenttree  | Content Cell  |  |
+| Fasttree  | Content Cell  |  |
+| RapidNJ  | Content Cell  |  |
+| FastME  | Content Cell  |  |
+| BioNJ  | Content Cell  |  |
+| quicktree  | Content Cell  |  |
+ 
+
+
 ***NOTE***
 >The name of input alignment file should not contain ':'.
 
@@ -124,7 +135,7 @@ If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run mul
 Set the new rule in the `snakefile`. You can directly copy other `rule`, and modify it as follow:
 - 1. **Line 1**     : Give the new rule a name by replacinig RULENAME, such as `iqtree`
 - 2. **Line 6**     : Change the in NEW_SOFTWARE to the name of new software. It is the log message.
-- 3. **Line 12-14** : If the software can use *multiple* threads, nothing need to be changed. If the software use only single threads, change `{threads}` to `1`.
+- 3. **Line 12-14** : If the software can use *multiple* threads, nothing need to be changed. If the software use only *single* threads, change `{threads}` to `1`.
   For example:
   ```
       output:
