@@ -66,6 +66,7 @@ snakemake --cores $NUM
 ```
 
 5. Output files
+
 This pipeline outputs three files of each {software}:{threads}:{alignment} combination
 
 ```
@@ -74,11 +75,19 @@ This pipeline outputs three files of each {software}:{threads}:{alignment} combi
 # Exceed the memory usage        : MEM 
 # Not exceeding time and memory  : FINISH
 {software}:{threads}:{alignment}.errorLog
+
 # The output of /usr/bin/time, including the CPU times, memory usage
 {software}:{threads}:{alignment}.timeLog
+
 # The output tree file
 {software}:{threads}:{alignment}.newick
 ```
+
+For example, if run `decenttree` with `8` threads and the input alignments is `1000_SSU_NR99.fasta.gz`, 
+the output files are:
+`decenttree:8:1000_SSU_NR99.fasta.gz.errorLog`
+`decenttree:8:1000_SSU_NR99.fasta.gz.timeLog`
+`decenttree:8:1000_SSU_NR99.fasta.gz.newick`
 
 
 
