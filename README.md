@@ -29,18 +29,20 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 4. converted file format (.sth, dist)
 ```
 
-| First Header  | Second Header |
+|   | MSA | Distance matrix |
 | ------------- | ------------- |
-| Decenttree  | Content Cell  |  |
-| Fasttree  | Content Cell  |  |
-| RapidNJ  | Content Cell  |  |
-| FastME  | Content Cell  |  |
-| BioNJ  | Content Cell  |  |
-| quicktree  | Content Cell  |  |
- 
+| Decenttree  | .fasta(.gz)  | Yes |
+| Fasttree  | .fasta, .phylip  | Yes |
+| RapidNJ  | .sth, .phylip  | Yes |
+| FastME  | ?  | Yes |
+| BioNJ  | No  | Yes |
+| quicktree  | .sth  | Yes |
 
+>MSA: Multiple sequence alignment; .sth: Stockholm format. 
+>For FastME, altough their manual said it supports MSA input with sequence alignment, but the face seems to be not. 
 
 ***NOTE***
+>
 >The name of input alignment file should not contain ':'.
 
 ### 3. Modify the configure file `config.yaml`
