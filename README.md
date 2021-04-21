@@ -25,7 +25,7 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 
 ### 2. Input format
 
-The supported input format of each software
+The supported input format of each software (TODO test .gz of all)
 
 |  Software | MSA | Distance matrix |
 | ------------- | ------------- | ------------- |
@@ -46,20 +46,24 @@ The supported input format of each software
 python convert2stockholm.py $inputFile $outputFile
 ```
 
-- Subsample the reads
+- Subsample the reads, using ``:
+- 
 ```
 1. subread < total reads, if subread > total reads, output all reads
 
 ```
+
 ***NOTE***
 >The name of input alignment file should not contain ':'.
 
 ### 3. Modify the configure file `config.yaml`
 
 ```
-# The path of directory including the input alignments (support MSA in .fasta, .sth and distance matrix format)
+# The path of directory including the input alignments.
 INPUTDIR : '/path/of/input/directory'
 
+# The format of input alignment. Only support MSA in fasta (fasta) or stockholm format (sth), or distance matrix (dist)
+INPUTFORMAT : 'dist' 
 
 # The path of output directory
 OUTPUTDIR : '/path/of/output/directory'
