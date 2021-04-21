@@ -103,11 +103,15 @@ the output files are:
 ### 6. Add new software or remove the default software
 
 ***Add new software***
-New software with *multiple* threads: add it into `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. Such as 
+
+- New software with *multiple* threads: add it into `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. 
+ 
+Such as 
  ```
  SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'new_multiple_software']
  ```
-New software with *single* threads  : add it into `SOFTWARE_SINGLE_THREADS` in `config.yaml`. 
+
+- New software with *single* threads  : add it into `SOFTWARE_SINGLE_THREADS` in `config.yaml`. 
 
 If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run multiple times (depending on how many threads combination you set in `THREADS`).
 
