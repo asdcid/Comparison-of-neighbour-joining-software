@@ -121,6 +121,13 @@ If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run mul
 
 **B. `snakefile`**
 
+Set the new rule in the `snakefile`.
+
+<p>
+  <img src="https://github.com/asdcid/figures/blob/master/Snakemake%20of%20neighbor%20joining/rule_code.png" />
+ </p>
+
+
 The name should be the same in rule (`snakefile`) and in SOFTWARE_SINGLE/MULTIPLE_THREAD (`config.yaml`)
 
 ***Remove existing software***
