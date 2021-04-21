@@ -7,14 +7,15 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - pigz
   - Snakemake v5.13.0
   - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
+  - Python packages: biopython, gzip
   
   **Software to compare** (can add or remove any software)
-  - decenttree
-  - quicktree
-  - RapidNJ
-  - FastME
-  - Fasttree
-  - BioNJ 
+  - Decenttree
+  - RapidNJ v2.3.2
+  - FastME v2.1.6.2
+  - Fasttree v2.1.11 (Using FasttreeMP for multiple threads)
+  - Quicktree v2.5 (single threads)
+  - BioNJ (single threads)
 
 ## Usage
 ### 1. Download the pipeline
@@ -23,11 +24,8 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 ```
 
 ### 2. Input format
-```
-1. subread < total reads, if subread > total reads, output all reads
 
-4. converted file format (.sth, dist)
-```
+The supported input format of each software
 
 |  Software | MSA | Distance matrix |
 | ------------- | ------------- | ------------- |
@@ -36,16 +34,24 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 | RapidNJ  | .sth, .phylip  | Yes |
 | FastME  | ?  | Yes |
 | BioNJ  | No  | Yes |
-| quicktree  | .sth  | Yes |
-
-
+| Quicktree  | .sth  | Yes |
 
 >MSA: Multiple sequence alignment; .sth: Stockholm format. 
 
 >For FastME, altough their manual said it supports MSA input with sequence alignment, but the face seems to be not. 
 
+- If change the format of file MSA from .fasta to .sth, using `convert2stockholm.py`:
+
+```
+python convert2stockholm.py $inputFile $outputFile
+```
+
+- Subsample the reads
+```
+1. subread < total reads, if subread > total reads, output all reads
+
+```
 ***NOTE***
->
 >The name of input alignment file should not contain ':'.
 
 ### 3. Modify the configure file `config.yaml`
