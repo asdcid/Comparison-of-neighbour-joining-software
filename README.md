@@ -121,10 +121,18 @@ If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run mul
 
 **B. `snakefile`**
 
-Set the new rule in the `snakefile`.
-- 1. **line 1**: Give the new rule a name by replacinig RULENAME, such as `iqtree`
-- 2. **line 6**: Change the in NEW_SOFTWARE to the name of new software. It is just the log message.
-- 3. 
+Set the new rule in the `snakefile`. You can directly copy other `rule`, and modify it as follow:
+- 1. **Line 1**     : Give the new rule a name by replacinig RULENAME, such as `iqtree`
+- 2. **Line 6**     : Change the in NEW_SOFTWARE to the name of new software. It is the log message.
+- 3. **Line 12-14** : If the software can use *multiple* threads, nothing need to be changed. If the software use only single threads, change `{threads}` to `1`.
+  For example:
+  ```
+      output:
+        errorLog=os.path.join(outputDir, "{software}:1:{alignmentName}.errorLog"),
+        timeLog=os.path.join(outputDir, "{software}:1:{alignmentName}.timeLog"),
+        tree=os.path.join(outputDir, "{software}:1:{alignmentName}.newick")
+  ```
+- 4. **Line 20**    : Replace the `COMMAND` with the commonds of the new software.
 <p>
   <img src="https://github.com/asdcid/figures/blob/master/Snakemake%20of%20neighbor%20joining/rule_code.png" />
  </p>
