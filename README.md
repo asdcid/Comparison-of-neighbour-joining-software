@@ -29,6 +29,9 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 4. converted file format (.sth, dist)
 ```
 
+***NOTE***
+>The name of input alignment file should not contain ':'.
+
 ### 3. Modify the configure file `config.yaml`
 
 ```
@@ -83,7 +86,7 @@ This pipeline outputs three files of each {software}:{threads}:{alignment} combi
 {software}:{threads}:{alignment}.newick
 ```
 
-For example, if run `decenttree` with `8` threads and the input alignments is `1000_SSU_NR99.fasta.gz`, 
+For example, if run `decenttree` with `8` threads, and the input alignments is `1000_SSU_NR99.fasta.gz`, 
 
 the output files are:
 
@@ -121,7 +124,7 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree']
 ```
 export PATH="/place/with/the/file":$PATH
 ```
->2. The name of input alignment file should not contain ':'.
+
  
 
 
