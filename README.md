@@ -2,7 +2,7 @@
 Compare different the running time, memory usage and accuracy of different neighbor-joining software with Snakemake.
 
 1. subread < total reads, if subread > total reads, output all reads
-2. the alignment name must not contain ':'
+
 3. the new software name must be the same as config file and rules
 4. converted file format (.sth, dist)
 5. set path system export PATH="":$PATH, including the timeout
@@ -23,17 +23,35 @@ Compare different the running time, memory usage and accuracy of different neigh
   - BioNJ 
 
 ## Usage
-Download the pipeline
+1. Download the pipeline
 ```
 https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 ```
 
-Run
+2. Modify the configure file `config.yaml`
 
+```
+
+```
+
+3. Run
 ```
 # $NUM is the threads you want to use
 snakemake --cores $NUM
 ```
+
+4. Output files
+
+5. Add new software
+**NOTE**
+1. All software should be in the environment variable, if not, do
+```
+export PATH="/place/with/the/file":$PATH
+```
+2. The name of input alignment file should not contain ':'
+
+ 
+
 
 ## 1. Original datasets
 1.1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
