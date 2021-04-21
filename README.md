@@ -29,7 +29,7 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 4. converted file format (.sth, dist)
 ```
 
-|   | MSA | Distance matrix |
+|  Software | MSA | Distance matrix |
 | ------------- | ------------- |
 | Decenttree  | .fasta(.gz)  | Yes |
 | Fasttree  | .fasta, .phylip  | Yes |
@@ -39,6 +39,7 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 | quicktree  | .sth  | Yes |
 
 >MSA: Multiple sequence alignment; .sth: Stockholm format. 
+
 >For FastME, altough their manual said it supports MSA input with sequence alignment, but the face seems to be not. 
 
 ***NOTE***
