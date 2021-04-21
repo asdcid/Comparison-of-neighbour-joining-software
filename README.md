@@ -31,12 +31,36 @@ https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 2. Modify the configure file `config.yaml`
 
 ```
+# The path of directory including the input alignments (support MSA in .fasta, .sth and distance matrix format)
+INPUTDIR : '/path/of/input/directory'
+
+
+# The path of output directory
+OUTPUTDIR : '/path/of/output/directory'
+
+
+# Memory limit, kb, 1,000,000,000 = 1 Tb
+MEMLIMIT : 1000000000
+
+# CPU limit, seconds, 43200s = 12 hours
+TIMELIMIT : 43200
+
+
+# How many threads you want to use to compare
+THREADS : [64, 32, 16, 8, 4, 2, 1]
+
+
+# The software you want to use to compare, but can only use single thread
+SOFTWARE_SINGLE_THREAD : ['bionj', 'quicktree']
+
+# The software you want to use to compare, but can use multiple threads.
+SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'rapidnj', 'fastme', 'fasttree']
 
 ```
 
 3. Run
 ```
-# $NUM is the threads you want to use
+# $NUM is the threads you want to use, should not be less than the maximum THREADS in `config.yaml`.
 snakemake --cores $NUM
 ```
 
