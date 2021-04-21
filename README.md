@@ -122,7 +122,9 @@ If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run mul
 **B. `snakefile`**
 
 Set the new rule in the `snakefile`.
-
+- 1. **line 1**: Give the new rule a name by replacinig RULENAME, such as `iqtree`
+- 2. **line 6**: Change the in NEW_SOFTWARE to the name of new software. It is just the log message.
+- 3. 
 <p>
   <img src="https://github.com/asdcid/figures/blob/master/Snakemake%20of%20neighbor%20joining/rule_code.png" />
  </p>
