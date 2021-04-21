@@ -84,11 +84,15 @@ This pipeline outputs three files of each {software}:{threads}:{alignment} combi
 ```
 
 For example, if run `decenttree` with `8` threads and the input alignments is `1000_SSU_NR99.fasta.gz`, 
-the output files are:
-`decenttree:8:1000_SSU_NR99.fasta.gz.errorLog`
-`decenttree:8:1000_SSU_NR99.fasta.gz.timeLog`
-`decenttree:8:1000_SSU_NR99.fasta.gz.newick`
 
+the output files are:
+
+`decenttree:8:1000_SSU_NR99.fasta.gz.errorLog`
+
+`decenttree:8:1000_SSU_NR99.fasta.gz.timeLog`
+
+`decenttree:8:1000_SSU_NR99.fasta.gz.newick`
+>asdf
 
 
 6. Add new software
