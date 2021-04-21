@@ -8,7 +8,7 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - Snakemake v5.13.0
   - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
   
-  **Software to compare**
+  **Software to compare** (can add or remove any software)
   - decenttree
   - quicktree
   - RapidNJ
