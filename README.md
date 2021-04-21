@@ -43,6 +43,8 @@ snakemake --cores $NUM
 4. Output files
 
 5. Add new software
+
+
 **NOTE**
 1. All software should be in the environment variable, if not, do
 ```
