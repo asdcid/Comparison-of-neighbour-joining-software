@@ -103,7 +103,15 @@ the output files are:
 ### 6. Add new software or remove the default software
 
 ***Add new software***
- 
+New software with *multiple* threads: add it into `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. Such as 
+ ```
+ SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'new_multiple_software']
+ ```
+New software with *single* threads  : add it into `SOFTWARE_SINGLE_THREADS` in `config.yaml`. 
+
+If it is added into the `SOFTWARE_MULTIPLE_THREADS`, it will be repeatly run multiple times (depending on how many threads combination you set in `THREADS`).
+
+
 
 The name should be the same in rule (`snakefile`) and in SOFTWARE_SINGLE/MULTIPLE_THREAD (`config.yaml`)
 
@@ -126,7 +134,7 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree']
 ```
 export PATH="/place/with/the/file":$PATH
 ```
->2. Software with single thread must be put into `SOFTWARE_SINGLE_THREAD`, if 
+
  
 
 
