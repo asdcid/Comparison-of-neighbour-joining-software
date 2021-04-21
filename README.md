@@ -92,7 +92,7 @@ the output files are:
 `decenttree:8:1000_SSU_NR99.fasta.gz.timeLog`
 
 `decenttree:8:1000_SSU_NR99.fasta.gz.newick`
->asdf
+
 
 
 6. Add new software
@@ -100,11 +100,11 @@ asdfasd 3. the new software name must be the same as config file and rules
 
 
 **NOTE**
-1. All software should be in the environment variable, if not, do
+>1. All software should be in the environment variable, if not, do
 ```
 export PATH="/place/with/the/file":$PATH
 ```
-2. The name of input alignment file should not contain ':'
+>2. The name of input alignment file should not contain ':'
 
  
 
