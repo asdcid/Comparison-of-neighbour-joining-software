@@ -17,19 +17,19 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - BioNJ 
 
 ## Usage
-1. Download the pipeline
+### 1. Download the pipeline
 ```
 https://github.com/asdcid/Snakemake-of-neighbor-joining-software.git
 ```
 
-2. Input format
+### 2. Input format
 ```
 1. subread < total reads, if subread > total reads, output all reads
 
 4. converted file format (.sth, dist)
 ```
 
-3. Modify the configure file `config.yaml`
+### 3. Modify the configure file `config.yaml`
 
 ```
 # The path of directory including the input alignments (support MSA in .fasta, .sth and distance matrix format)
@@ -59,13 +59,13 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'rapidnj', 'fastme', 'fasttree']
 
 ```
 
-4. Run
+### 4. Run
 ```
 # $NUM is the threads you want to use, should not be less than the maximum THREADS in `config.yaml`.
 snakemake --cores $NUM
 ```
 
-5. Output files
+### 5. Output files
 
 This pipeline outputs three files of each {software}:{threads}:{alignment} combination
 
@@ -95,13 +95,15 @@ the output files are:
 
 
 
-6. Add new software or remove the default software
-**Add new software**
+### 6. Add new software or remove the default software
+
+***Add new software***
  
 
 The name should be the same in rule (`snakefile`) and in SOFTWARE_SINGLE/MULTIPLE_THREAD (`config.yaml`)
 
-**Remove existing software**
+***Remove existing software***
+
 If you don't want to compare some software, just remove them from `SOFTWARE_SINGLE_THREAD` or `SOFTWARE_MULTIPLE_THREADS` in `config.yaml`. 
 
 Don't need to change the `snakefile`.
