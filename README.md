@@ -68,6 +68,8 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree', 'rapidnj', 'fastme', 'fasttree']
 snakemake --cores $NUM
 ```
 
+Each software in `SOFTWARE_SINGLE_THREAD` will run each alignment in the input directory with different threads in `THREADS` (`config.yaml`), and each softare in `SOFTWARE_MULTIPLE_THREADS` will run each alignment in the input directory with single thread.
+
 ### 5. Output files
 
 This pipeline outputs three files of each {software}:{threads}:{alignment} combination
@@ -124,7 +126,7 @@ SOFTWARE_MULTIPLE_THREADS : ['decenttree']
 ```
 export PATH="/place/with/the/file":$PATH
 ```
-
+>2. Software with single thread must be put into `SOFTWARE_SINGLE_THREAD`, if 
  
 
 
