@@ -4,10 +4,11 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
 ## Requirments
   **Script required**
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
-  - pigz
   - Snakemake v5.13.0
-  - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
   - Python packages: biopython, gzip
+  - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
+  - seqtk, pigz (for subsample the alignments)
+
   
   **Software to compare** (can add or remove any software)
   - Decenttree
@@ -40,13 +41,13 @@ The supported input format of each software (TODO test .gz of all)
 
 >For FastME, altough their manual said it supports MSA input with sequence alignment, but the face seems to be not. 
 
-- If change the format of file MSA from .fasta to .sth, using `convert2stockholm.py`:
+- If you want to change the format of file MSA from .fasta to .sth, using `convert2stockholm.py`:
 
 ```
 python convert2stockholm.py $inputFile $outputFile
 ```
 
-- Subsample the reads, using ``:
+- If you want to subsample the reads, using ``:
 - 
 ```
 1. subread < total reads, if subread > total reads, output all reads
