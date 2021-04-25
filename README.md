@@ -32,7 +32,7 @@ The supported input format of each software (TODO test .gz of all)
 | ------------- | ------------- | ------------- |
 | Decenttree  | .fasta(.gz)  | Yes |
 | Fasttree  | .fasta, .phylip  | Yes |
-| RapidNJ  | .sth, .phylip  | Yes |
+| RapidNJ  | .fasta, .sth  | Yes |
 | FastME  | ?  | Yes |
 | BioNJ  | No  | Yes |
 | Quicktree  | .sth  | Yes |
