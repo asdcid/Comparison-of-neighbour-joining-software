@@ -31,7 +31,7 @@ The supported input format of each software (TODO test .gz of all)
 |  Software | MSA | Distance matrix |
 | ------------- | ------------- | ------------- |
 | Decenttree  | .fasta(.gz)  | Yes |
-| Fasttree  | .fasta, .phylip  | Yes |
+| Fasttree  | .fasta, .phylip  | No |
 | RapidNJ  | .fasta, .sth  | Yes |
 | FastME  | ?  | Yes |
 | BioNJ  | No  | Yes |
