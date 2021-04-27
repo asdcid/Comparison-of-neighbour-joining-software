@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 import os
 
-
-'''
-To do: 1 different input
-'''
-
 configfile: "config.yaml"
 
 
@@ -142,7 +137,7 @@ rule fasttree:
     run:
         if inputFileFormat == 'fasta':
             shell("""
-                export OMP_NUM_THREADS=$threads
+                export OMP_NUM_THREADS={wildcards.threads}
                 timeout -t {params.timeLimit} -m {memLimit} \
                     /usr/bin/time -o {output.timeLog} -v \
                         zcat -f {input} | FastTreeMP \
