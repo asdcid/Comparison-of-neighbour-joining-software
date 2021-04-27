@@ -6,9 +6,6 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
   - Snakemake v5.13.0
   - Python packages: biopython, gzip
-  - IQ-Tree (for Multiple sequence alignment conversion, from `.fasta` to `.dist`)
-  - seqtk, pigz (for subsample the alignments)
-
   
   **Software to compare** (can add or remove any software)
   - Decenttree
@@ -17,6 +14,10 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - Fasttree v2.1.11 (Using FasttreeMP for multiple threads)
   - Quicktree v2.5 (single threads)
   - BioNJ (single threads)
+
+  **Optional**
+  - IQ-Tree (for Multiple sequence alignment format conversion, from `.fasta` to `.dist`)
+  - seqtk, pigz (for subsampling the alignments)
 
 ## Usage
 ### 1. Download the pipeline
