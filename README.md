@@ -219,15 +219,4 @@ export PATH="/place/with/the/file":$PATH
  Aligned 23S/28S ribosomal RNA sequences with a minimum length of 1900 bases.
 ```
 
-## 2. Parameters
 
-
- 2.2 Subsample datasets (fasta alignments and IQ-TREE distance matrix)
- 
-  - decenttree (>5000 reads, run out the memory (1TB))
-  - quicktree (1 threads, Stockholm format)
-  - RapidNJ
-  - FastME (although the manual said it allow , but it is not)
-  - Fasttree ()
-  - BioNJ (cannot install)
- 
