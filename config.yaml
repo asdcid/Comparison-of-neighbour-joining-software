@@ -1,0 +1,26 @@
+# The path of directory including the input alignments.
+INPUTDIR : 'test/dist/'
+
+# The format of input alignment. Only support MSA in fasta (fasta) or stockholm format (sth), or distance matrix (dist)
+INPUTFORMAT : 'dist' 
+
+# The path of output directory
+OUTPUTDIR : 'data'
+
+
+# Memory limit, kb, 1,000,000,000 = 1 Tb
+MEMLIMIT : 1000000000
+
+# CPU limit, seconds, 43200s = 12 hours
+TIMELIMIT : 43200
+
+
+# How many threads you want to use to compare, can be only one value. For example, only use 5 threads: [5]
+THREADS : [1]
+
+
+# The software you want to use to compare, but can only use single thread. Can be empty []
+SOFTWARE_SINGLE_THREAD : #['bionj', 'quicktree']
+
+# The software you want to use to compare, but can use multiple threads. Can be empty []
+SOFTWARE_MULTIPLE_THREADS : ['decenttree'] # ['decenttree', 'rapidnj', 'fastme', 'fasttree']
