@@ -11,9 +11,10 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - Decenttree
   - RapidNJ v2.3.2
   - FastME v2.1.6.2
-  - Fasttree v2.1.11 (Using FasttreeMP for multiple threads)
   - Quicktree v2.5 (single threads)
   - BioNJ (single threads)
+  - Fasttree v2.1.11 (Using FasttreeMP for multiple threads) **Not use, because it does not support dist format**
+
 
   **Optional**
   - IQ-Tree (for Multiple sequence alignment format conversion, from `.fasta` to `.dist`)
@@ -192,7 +193,7 @@ export PATH="/place/with/the/file":$PATH
 
 
 ## 1. Original datasets
-1.1. Public SARS-CoV-2 alignment: 364,834 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/28000_samples_less_than_2_ambiguities.fa.xz, 01/04/2021)
+1.1. Public SARS-CoV-2 alignment: 364,428 sequences (https://github.com/bpt26/parsimony/blob/main/1_sample_selection/publicMsa.2021-03-18.masked.retain_samples.save.minus_parsimony.samples.fasta.xz, 11/05/2021)
 
 1.2. Sliva rRNAs (138.1). https://www.arb-silva.de/download/arb-files/
 
