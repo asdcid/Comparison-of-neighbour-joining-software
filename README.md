@@ -78,6 +78,17 @@ Subsample data: `/home/raymond/work/decenttree_benchmark/data/subsample`
 
 Distance matrix: `/home/raymond/work/decenttree_benchmark/data/distance_matrix_decenttree`
 
+RONA CPU:
+
+`lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('`
+
+```
+CPU(s):                256
+Thread(s) per core:    2
+Core(s) per socket:    64
+Socket(s):             2
+```
+
 ### 2.1 subsample
 
 
