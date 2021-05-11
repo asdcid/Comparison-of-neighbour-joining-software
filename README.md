@@ -17,9 +17,9 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
 
 
 
-### 2. Input format
+##  Input format
 
-The supported input format of each software (TODO test .gz of all)
+The supported input format of each software
 
 |  Software | MSA | Distance matrix |
 | ------------- | ------------- | ------------- |
@@ -66,3 +66,67 @@ The supported input format of each software (TODO test .gz of all)
 ```
 
 
+## 2. Pre-process
+On rona:
+Working dir: `/home/raymond/work/decenttree_benchmark/`
+
+Data:      `/home/raymond/work/decenttree_benchmark/data`
+
+Ori data:  `/home/raymond/work/decenttree_benchmark/data/ori`
+
+Subsample data: `/home/raymond/work/decenttree_benchmark/data/subsample`
+
+Distance matrix: `/home/raymond/work/decenttree_benchmark/data/distance_matrix_decenttree`
+
+### 2.1 subsample
+
+
+`/home/raymond/work/decenttree_benchmark/1_subsample.sh`
+
+```
+#!/bin/bash
+
+
+set -e
+
+inputDir='data/ori/'
+outputDir='data/subsample/'
+
+
+for inputFile in $inputDir/*.gz
+do
+    for number in 1000 2000 4000 8000 16000 32000 64000 128000
+    do
+        outputFile=$outputDir/${number}_$(basename ${inputFile})
+        ~/devel/seqtk/seqtk sample $inputFile $number | pigz > $outputFile
+    done
+done
+```
+
+### 2.2 Get distance matrix
+
+`/home/raymond/work/decenttree_benchmark/1.1_getDistance_matrix_decenttree.sh`
+
+```
+#!/bin/bash
+
+
+
+inputDir='data/subsample/'
+outputDir='data/distance_matrix_decenttree'
+threads=40
+for inputFile in $inputDir/*.gz
+do
+    outputFile=$outputDir/$(basename $inputFile).dist
+    timelog=$outputDir/log/$(basename $inputFile)'_decenttree.log'
+    /usr/bin/time -o $timelog -v \
+    ~/devel/iqtree2_latest//build/utils/decentTree \
+        -fasta $inputFile \
+        -no-matrix \
+        -dist-out $outputFile \
+        -t NONE \
+        -no-out \
+        -no-banner \
+        -nt $threads
+done
+```
