@@ -4,7 +4,7 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
 ## Requirments
   **Script required**
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
-  - seqtk 1.3-r116-dirty (for subsampling the alignments)
+  - seqtk v1.3-r116-dirty (for subsampling the alignments)
 
   **Software to compare** (can add or remove any software)
   - Decenttree
