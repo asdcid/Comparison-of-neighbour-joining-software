@@ -102,6 +102,7 @@ do
     done
 done
 ```
+> NOTE: There are only 95,286 sequences in LSU NR99 dataset in the 128,000 subset.
 
 ### 2.2 Get distance matrix
 
