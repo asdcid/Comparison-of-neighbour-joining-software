@@ -105,7 +105,7 @@ done
 
 ### 2.2 Get distance matrix
 
-`/home/raymond/work/decenttree_benchmark/1.1_getDistance_matrix_decenttree.sh`
+`/home/raymond/work/decenttree_benchmark/2_getDistance_matrix_decenttree.sh`
 
 ```
 #!/bin/bash
