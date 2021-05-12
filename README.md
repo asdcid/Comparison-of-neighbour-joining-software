@@ -116,6 +116,7 @@ done
 > NOTE: There are only 95,286 sequences in LSU NR99 dataset in the 128,000 subset.
 
 ### 2.2 Get distance matrix
+Since there are some spaces in the header of SILVA dataset, change the space with '_\'
 
 `/home/raymond/work/decenttree_benchmark/2_getDistance_matrix_decenttree.sh`
 
@@ -136,6 +137,7 @@ do
         -fasta $inputFile \
         -no-matrix \
         -dist-out $outputFile \
+        -strip-name " " -name-replace "_" \
         -t NONE \
         -no-out \
         -no-banner \
