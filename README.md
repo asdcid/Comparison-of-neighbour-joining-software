@@ -24,8 +24,8 @@ The supported input format of each software
 |  Software | MSA | Distance matrix | Multi-threads
 | ------------- | ------------- | ------------- | ------------- |
 | Decenttree  | .fasta(.gz)  | Yes | Yes |
-| RapidNJ  | .fasta, .sth  | Yes | Yes in fasta to distance matrix step |
-| FastME  | ?  | Yes | Yes in fasta to distance matrix step |
+| RapidNJ  | .fasta, .sth  | Yes | Yes, in converting fasta to distance matrix step |
+| FastME  | ?  | Yes | Yes, in converting fasta to distance matrix step |
 | BioNJ  | No  | Yes | No |
 | Quicktree  | .sth  | Yes | No |
 
@@ -107,7 +107,7 @@ decentTree \
 
 We used each subset as the input to run each program (Decenttree, FastME, RapidNJ, Quicktree, and BioNJ). 
 - If the program has more than one NJ related algorithms, we ran all of them. Decenttree has 9 NJ related algorithms (BIONJ, BIONJ-R, BIONJ-V, NJ, NJ-R, NJ-R-D, NJ-V, RapidNJ, UNJ), whereas FastME has three (BIONJ, NJ, UNJ)
-- If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 runs.
+- If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 combinations.
 
 To save the computational resource, we limited the memory to 500 GB, and the running elapsed time to 12 hours with `timeout`.
 
@@ -266,11 +266,44 @@ timeout -t $timelimit -m $memlimit \
 ### 4.1 Compare the log likelihood of each output tree
 
 ```
-iqtree2 --epsilon 1 -s $dataset -te $treeFile -m JC --prefix $outputFile
+# AlignmentFile is the corresponding subset alignment file (in .fasta format) of each tree output
+alignmentFile=$1
+# treeFile is the tree output of each combination
+treeFile=$2
+# outputPrefix is the prefix of output results. The log likelihood is in ${outputPrefix}.iqtree
+outputPrefix=$3
+
+# -m JC: using JC mode (Equal substitution rates and equal base frequencies)
+# --epsilon 1: 
+
+iqtree2 --epsilon 1 -s $alignmentFile -te $treeFile -m JC --prefix $outputPrefix
 ```
 
-### 4.2 Compare the root-mean-square of 
-Firstly, we converted the tree to distance matrix 
+### 4.2 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination
+To compare the accuracy of different programs, we calculated the the root-mean-square between original input and the distance matrix of output tree result of each combination. 
+| Notably, this is based on XXXXXXXXXXXXXXXXXXXX
+
+Firstly, we converted the tree to distance matrix with `IQ-TREE`
+
+```
+# treeFile is the tree output of each combination
+treeFile=$1
+# outputFile is in distance matrix format
+outputFile=$2
+
+iqtree2 \
+    -dist $outputFile \
+    -t $treeFile
+```
 
 Secondly, compared the original distance matrix and the tree distance matrix
+```
+# oriFile is the corresponding distance matrix file generated from 2.2 Get distance matrix.
+oriFile=$1
+# inputFile is the file in distance matrix format generated from last IQ-TREE step.
+inputFile=$2
 
+ cmpMatrix \
+     $oriFile \
+     $inputFile
+```
