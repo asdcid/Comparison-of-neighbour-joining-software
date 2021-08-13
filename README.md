@@ -4,9 +4,9 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
 ## Requirments
   **Script required**
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
-  - seqtk v1.3-r116-dirty (for subsampling the alignments)
-  - IQ-TREE2 (for converte)
-  - cmpMatrix
+  - seqtk v1.3-r116-dirty (https://github.com/lh3/seqtk, for subsampling the alignments)
+  - IQ-TREE2 (https://github.com/iqtree/iqtree2, for converting the .newick format to distance matrix)
+  - cmpMatrix (https://github.com/thomaskf/cmpMatrix, for calculating the root-mean-square difference between distance matrixs)
 
   **Software to compare** (can add or remove any software)
   - Decenttree
@@ -14,8 +14,6 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - FastME v2.1.6.2
   - Quicktree v2.5 (single threads)
   - BioNJ (single threads)
-  - Fasttree v2.1.11 (Using FasttreeMP for multiple threads) **Not use, because it does not support dist format**
-
 
 
 
@@ -23,14 +21,13 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
 
 The supported input format of each software
 
-|  Software | MSA | Distance matrix |
-| ------------- | ------------- | ------------- |
-| Decenttree  | .fasta(.gz)  | Yes |
-| Fasttree  | .fasta, .phylip  | No |
-| RapidNJ  | .fasta, .sth  | Yes |
-| FastME  | ?  | Yes |
-| BioNJ  | No  | Yes |
-| Quicktree  | .sth  | Yes |
+|  Software | MSA | Distance matrix | Multi-threads
+| ------------- | ------------- | ------------- | ------------- |
+| Decenttree  | .fasta(.gz)  | Yes | Yes |
+| RapidNJ  | .fasta, .sth  | Yes | Yes in fasta to distance matrix step |
+| FastME  | ?  | Yes | Yes in fasta to distance matrix step |
+| BioNJ  | No  | Yes | No |
+| Quicktree  | .sth  | Yes | No |
 
 >MSA: Multiple sequence alignment; .sth: Stockholm format. 
 
@@ -71,7 +68,7 @@ The supported input format of each software
 ## 2. Pre-process
 ### 2.1 subsample
 
-Randomly selected 7 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases.
+Randomly selected 7 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases, respectively. Totally 35 subsets.
 
 ```
 # inputFile is original dataset
@@ -106,15 +103,20 @@ decentTree \
 
 ```
 
-## 3 Run each programs
+## 3 Run each program
 
-15 al, record by time out
+We used each subset as the input to run each program (Decenttree, FastME, RapidNJ, Quicktree, and BioNJ). If the program has more than one NJ related algorithms, we ran all of them. If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 runs.
 
+To save the computational resource, we limited the memory to 500 GB, and the running elapsed time to 12 hours with `timeout`.
+
+We recorded the elapsed time and memory useage with `usr/bin/time`.
+
+### 3.1 Decenttree
 ```
 # 12 hours
 timelimit=43200
 # 500 GB
-memlimit=500000000
+memlimit=400000000
 
 # inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
 inputFile=$1
@@ -139,6 +141,75 @@ do
 done
 
 ```
+
+
+### 3.2 FastME
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
+
+# inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
+
+```
+
+### 3.3 RapidNJ
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
+
+# inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
+
+```
+
+### 3.4 Quicktree
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
+
+# inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
+
+```
+
+### 3.5 BioNJ
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
+
+# inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
+
+```
+
+
+
+
 
 ### 4 Comparison
 
