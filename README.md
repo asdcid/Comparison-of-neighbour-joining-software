@@ -9,11 +9,11 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - cmpMatrix (https://github.com/thomaskf/cmpMatrix, for calculating the root-mean-square difference between distance matrixs)
 
   **Software to compare** (can add or remove any software)
-  - Decenttree
-  - RapidNJ v2.3.2
-  - FastME v2.1.6.2
-  - Quicktree v2.5 (single threads)
-  - BioNJ (single threads)
+  - Decenttree (https://github.com/iqtree/decenttree)
+  - FastME v2.1.6.2 (http://www.atgc-montpellier.fr/fastme/)
+  - RapidNJ v2.3.2 (https://birc.au.dk/software/rapidnj/)
+  - Quicktree v2.5 (single threads) (https://github.com/khowe/quicktree)
+  - BioNJ (single threads) (http://www.atgc-montpellier.fr/bionj/)
 
 
 
@@ -105,7 +105,9 @@ decentTree \
 
 ## 3 Run each program
 
-We used each subset as the input to run each program (Decenttree, FastME, RapidNJ, Quicktree, and BioNJ). If the program has more than one NJ related algorithms, we ran all of them. If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 runs.
+We used each subset as the input to run each program (Decenttree, FastME, RapidNJ, Quicktree, and BioNJ). 
+- If the program has more than one NJ related algorithms, we ran all of them. Decenttree has 9 NJ related algorithms (BIONJ, BIONJ-R, BIONJ-V, NJ, NJ-R, NJ-R-D, NJ-V, RapidNJ, UNJ), whereas FastME has three (BIONJ, NJ, UNJ)
+- If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 runs.
 
 To save the computational resource, we limited the memory to 500 GB, and the running elapsed time to 12 hours with `timeout`.
 
@@ -124,6 +126,8 @@ inputFile=$1
 outputFile=$2
 # threads is how many threads you want to use in this run
 threads=$3
+# timelog is the log file of elapsed time and memory useage
+timelog=$4
 
 for method in BIONJ BIONJ-R BIONJ-V NJ NJ-R NJ-R-D NJ-V RapidNJ UNJ
 do
@@ -138,6 +142,7 @@ do
                    -nt $threads \
                    -t $method \
                    -out $outputFile
+    done
 done
 
 ```
@@ -156,6 +161,25 @@ inputFile=$1
 outputFile=$2
 # threads is how many threads you want to use in this run
 threads=$3
+# timelog is the log file of elapsed time and memory useage
+timelog=$4
+
+
+for method in BIONJ NJ UNJ
+do
+    for threads in 1 2 4 8 16 32
+    do
+       ((fix_time=$threads*$timelimit))
+
+       /home/raymond/devel/timeout/timeout -t $fix_time -m $memlimit \
+           /usr/bin/time -o $timelog -v \
+               fastme \
+                   -m $method \
+                   -T $threads \
+                   -i $inputFile\
+                   -o $outputFile
+    done
+done
 
 ```
 
@@ -172,7 +196,23 @@ inputFile=$1
 outputFile=$2
 # threads is how many threads you want to use in this run
 threads=$3
+# timelog is the log file of elapsed time and memory useage
+timelog=$4
 
+# -i pd: the input is in distance matrix in phylip format
+for threads in 1 2 4 8 16 32
+do
+    ((fix_time=$threads*$timelimit))
+    
+     /home/raymond/devel/timeout/timeout -t $fix_time -m $memlimit \
+         /usr/bin/time -o $timelog -v \
+             rapidnj \
+                 $inputFile \
+                 -i pd \
+                 -c $threads \
+                 -x $outputFile 
+     
+done
 ```
 
 ### 3.4 Quicktree
@@ -186,9 +226,17 @@ memlimit=500000000
 inputFile=$1
 # outputFile is the output result (in .newick format)
 outputFile=$2
-# threads is how many threads you want to use in this run
-threads=$3
+# timelog is the log file of elapsed time and memory useage
+timelog=$3
 
+# -in m: inputFile is in distance matrix format
+# -out t: output is a tree in New Hampshire format
+timeout -t $timelimit -m $memlimit \
+    /usr/bin/time -o $timelog -v \
+        quicktree \
+            -in m \
+            -out t \
+            $inputFile  1> $outputFile
 ```
 
 ### 3.5 BioNJ
@@ -202,16 +250,18 @@ memlimit=500000000
 inputFile=$1
 # outputFile is the output result (in .newick format)
 outputFile=$2
-# threads is how many threads you want to use in this run
-threads=$3
+# timelog is the log file of elapsed time and memory useage
+timelog=$3
 
+timeout -t $timelimit -m $memlimit \
+    /usr/bin/time -o $timelog -v \
+        BIONJ \
+            $inputFile \
+            $outputFile
 ```
 
 
-
-
-
-### 4 Comparison
+## 4 Comparison
 
 ### 4.1 Compare the log likelihood of each output tree
 
