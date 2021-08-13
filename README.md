@@ -67,80 +67,33 @@ The supported input format of each software
 
 
 ## 2. Pre-process
-On rona:
-Working dir: `/home/raymond/work/decenttree_benchmark/`
-
-Data:      `/home/raymond/work/decenttree_benchmark/data`
-
-Ori data:  `/home/raymond/work/decenttree_benchmark/data/ori`
-
-Subsample data: `/home/raymond/work/decenttree_benchmark/data/subsample`
-
-Distance matrix: `/home/raymond/work/decenttree_benchmark/data/distance_matrix_decenttree`
-
-RONA CPU:
-
-`lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('`
-
-```
-CPU(s):                256
-Thread(s) per core:    2
-Core(s) per socket:    64
-Socket(s):             2
-```
-
 ### 2.1 subsample
 
-
-`/home/raymond/work/decenttree_benchmark/1_subsample.sh`
+Randomly selected 6 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases.
 
 ```
-#!/bin/bash
+# inputFile is original dataset
+# number is the sequences number
+# outputFile is the sequences after randomly selected 
 
+seqtk sample $inputFile $number | pigz > $outputFile
 
-set -e
-
-inputDir='data/ori/'
-outputDir='data/subsample/'
-
-
-for inputFile in $inputDir/*.gz
-do
-    for number in 1000 2000 4000 8000 16000 32000 64000 128000
-    do
-        outputFile=$outputDir/${number}_$(basename ${inputFile})
-        ~/devel/seqtk/seqtk sample $inputFile $number | pigz > $outputFile
-    done
-done
 ```
-> NOTE: There are only 95,286 sequences in LSU NR99 dataset in the 128,000 subset.
 
 ### 2.2 Get distance matrix
-Since there are some spaces in the header of SILVA dataset, change the space with '_\' (`-strip-name " " -name-replace "_"`)
-
-`/home/raymond/work/decenttree_benchmark/2_getDistance_matrix_decenttree.sh`
 
 ```
-#!/bin/bash
+# inputFile is the subset generated in 2.1 subsample
+# outputFile is the distance matrix of the subset
+# thread is how many threads you want to use in this run
 
-
-
-inputDir='data/subsample/'
-outputDir='data/distance_matrix_decenttree'
-threads=40
-for inputFile in $inputDir/*.gz
-do
-    outputFile=$outputDir/$(basename $inputFile).dist
-    timelog=$outputDir/log/$(basename $inputFile)'_decenttree.log'
-    /usr/bin/time -o $timelog -v \
-    ~/devel/iqtree2_latest//build/utils/decentTree \
+    decentTree \
         -fasta $inputFile \
         -no-matrix \
         -dist-out $outputFile \
-        -strip-name " " -name-replace "_" \
         -t NONE \
         -no-out \
         -no-banner \
         -nt $threads
-done
+
 ```
