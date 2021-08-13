@@ -274,7 +274,9 @@ treeFile=$2
 outputPrefix=$3
 
 # -m JC: using JC mode (Equal substitution rates and equal base frequencies)
-# --epsilon 1: 
+# --epsilon 1: IQ-TREE will optimise the branch lengths of the tree, 
+               until the log-likelihood difference between two consecutive step is < epsilon.
+               Larger epsilon makes it run faster, but lower epsilon make likelihood values more accurate.
 
 iqtree2 --epsilon 1 -s $alignmentFile -te $treeFile -m JC --prefix $outputPrefix
 ```
