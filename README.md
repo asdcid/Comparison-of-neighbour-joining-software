@@ -5,6 +5,8 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   **Script required**
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
   - seqtk v1.3-r116-dirty (for subsampling the alignments)
+  - IQ-TREE2 (for converte)
+  - cmpMatrix
 
   **Software to compare** (can add or remove any software)
   - Decenttree
@@ -87,13 +89,33 @@ seqtk sample $inputFile $number | pigz > $outputFile
 # outputFile is the distance matrix of the subset
 # thread is how many threads you want to use in this run
 
-    decentTree \
-        -fasta $inputFile \
-        -no-matrix \
-        -dist-out $outputFile \
-        -t NONE \
-        -no-out \
-        -no-banner \
-        -nt $threads
+decentTree \
+    -fasta $inputFile \
+    -no-matrix \
+    -dist-out $outputFile \
+    -t NONE \
+    -no-out \
+    -no-banner \
+    -nt $threads
 
 ```
+
+## 3 Run each programs
+
+15 al, record by time out
+
+
+
+### 4 Comparison
+
+### 4.1 Compare the log likelihood of each output tree
+
+```
+iqtree2 --epsilon 1 -s $dataset -te $treeFile -m JC --prefix $outputFile
+```
+
+### 4.2 Compare the root-mean-square of 
+Firstly, we converted the tree to distance matrix 
+
+Secondly, compared the original distance matrix and the tree distance matrix
+
