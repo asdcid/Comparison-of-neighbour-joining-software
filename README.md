@@ -71,12 +71,15 @@ The supported input format of each software
 ## 2. Pre-process
 ### 2.1 subsample
 
-Randomly selected 6 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases.
+Randomly selected 7 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases.
 
 ```
 # inputFile is original dataset
+inputFile=$1
 # number is the sequences number
+number=$2
 # outputFile is the sequences after randomly selected 
+outputFile=$3
 
 seqtk sample $inputFile $number | pigz > $outputFile
 
@@ -86,8 +89,11 @@ seqtk sample $inputFile $number | pigz > $outputFile
 
 ```
 # inputFile is the subset generated in 2.1 subsample
+inputFile=$1
 # outputFile is the distance matrix of the subset
-# thread is how many threads you want to use in this run
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
 
 decentTree \
     -fasta $inputFile \
@@ -104,7 +110,35 @@ decentTree \
 
 15 al, record by time out
 
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
 
+# inputFile is the distance matrix of subset generated from 2.2 Get distance matrix
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# threads is how many threads you want to use in this run
+threads=$3
+
+for method in BIONJ BIONJ-R BIONJ-V NJ NJ-R NJ-R-D NJ-V RapidNJ UNJ
+do
+    for threads in 1 2 4 8 16 32
+    do
+       ((fix_time=$threads*$timelimit))
+
+       /home/raymond/devel/timeout/timeout -t $fix_time -m $memlimit \
+           /usr/bin/time -o $timelog -v \
+               decentTree \
+                   -in $inputFile \
+                   -nt $threads \
+                   -t $method \
+                   -out $outputFile
+done
+
+```
 
 ### 4 Comparison
 
