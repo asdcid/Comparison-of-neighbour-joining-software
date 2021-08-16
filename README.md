@@ -92,12 +92,17 @@ outputFile=$2
 # threads is how many threads you want to use in this run
 threads=$3
 
+# -truncate-name-at " ": truncate the content after space (" ") of the fasta name. 
+#                        Some fasta names contains space, which will disrupt the 
+#                        distance matrix.
+
 decentTree \
     -fasta $inputFile \
     -no-matrix \
     -dist-out $outputFile \
     -t NONE \
     -no-out \
+    -truncate-name-at " " \
     -no-banner \
     -nt $threads
 
