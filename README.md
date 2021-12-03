@@ -47,28 +47,18 @@ The supported input format of each software
   Sequences from cultivated species have been preserved independent from prior filtering.
   ```
 
-  - SSU: 2,224,740 sequences, 50,000 bp, `SILVA_138.1_SSURef_tax_silva_full_align_trunc.fasta.gz`
-```
-  aligned 16S/18S ribosomal RNA sequences with a minimum length of 1200 bases for Bacteria and Eukarya and 900 bases for Archaea.
-```
-
-
-
   - LSU NR99 (large ribosomal subunit): 95,286 sequences, 149,999 bp, `SILVA_138.1_LSURef_NR99_tax_silva_full_align_trunc.fasta.gz`
  ```
   It is based on the Ref dataset with a 99% criterion applied to remove redundant sequences using the Opens external link in new windowvsearch tool. 
   Sequences from cultivated species have been preserved independent from prior filtering.
   ```
-  - LSU: 227,331 sequences, 149,999 bp, `SILVA_138.1_LSURef_tax_silva_full_align_trunc.fasta.gz`
-```
- Aligned 23S/28S ribosomal RNA sequences with a minimum length of 1900 bases.
-```
+
 
 
 ## 2. Pre-process
 ### 2.1 subsample
 
-Randomly selected 7 subsets (1000 2000 4000 8000 16000 32000 64000) from the five databases, respectively. Totally 35 subsets.
+Randomly selected 7 subsets (1000 2000 4000 8000 16000 32000 64000) from the three databases, respectively. Totally 21 subsets.
 
 ```
 # inputFile is original dataset
@@ -111,8 +101,8 @@ decentTree \
 ## 3 Run each program
 
 We used each subset as the input to run each program (Decenttree, FastME, RapidNJ, Quicktree, and BioNJ). 
-- If the program has more than one NJ related algorithms, we ran all of them. Decenttree has 9 NJ related algorithms (BIONJ, BIONJ-R, BIONJ-V, NJ, NJ-R, NJ-R-D, NJ-V, RapidNJ, UNJ), whereas FastME has three (BIONJ, NJ, UNJ)
-- If the program supported multi-threads, we ran it with 6 different thread setting (1,2,4,8,16,32). This resulted in totally 2,800 combinations.
+- If the program has more than one NJ related algorithms, we ran all of them. Decenttree has 4 NJ related algorithms (BIONJ-V, BIONJ-R, NJ-R, NJ-V), whereas FastME has two (BIONJ, NJ)
+- If the program supported multi-threads, we ran it with 2 different thread setting (1,32). This resulted in totally 378 (9 implements x 2 thread counts x 21 subsets) combinations.
 
 To save the computational resource, we limited the memory to 500 GB, and the running elapsed time to 12 hours with `timeout`.
 
@@ -134,9 +124,9 @@ threads=$3
 # timelog is the log file of elapsed time and memory useage
 timelog=$4
 
-for method in BIONJ BIONJ-R BIONJ-V NJ NJ-R NJ-R-D NJ-V RapidNJ UNJ
+for method in BIONJ-R BIONJ-V NJ-R NJ-V
 do
-    for threads in 1 2 4 8 16 32
+    for threads in 1 32
     do
        ((fix_time=$threads*$timelimit))
 
@@ -170,9 +160,9 @@ threads=$3
 timelog=$4
 
 
-for method in BIONJ NJ UNJ
+for method in BIONJ NJ
 do
-    for threads in 1 2 4 8 16 32
+    for threads in 1 32
     do
        ((fix_time=$threads*$timelimit))
 
@@ -205,7 +195,7 @@ threads=$3
 timelog=$4
 
 # -i pd: the input is in distance matrix in phylip format
-for threads in 1 2 4 8 16 32
+for threads in 1 32
 do
     ((fix_time=$threads*$timelimit))
     
@@ -286,7 +276,7 @@ outputPrefix=$3
 iqtree2 --epsilon 1 -s $alignmentFile -te $treeFile -m JC --prefix $outputPrefix
 ```
 
-### 4.2 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination
+### 4.2 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination (haven't used in the manuscript)
 To compare the accuracy of different programs, we calculated the the root-mean-square between original input and the distance matrix of output tree result of each combination. 
 | Notably, this is based on XXXXXXXXXXXXXXXXXXXX
 
