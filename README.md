@@ -6,7 +6,7 @@ Compare the running time, memory usage and accuracy of different neighbor-joinin
   - timeout (https://github.com/pshved/timeout, for the CPU time and memory usage limitation)
   - seqtk v1.3-r116-dirty (https://github.com/lh3/seqtk, for subsampling the alignments)
   - IQ-TREE2 (https://github.com/iqtree/iqtree2, for converting the .newick format to distance matrix)
-  - cmpMatrix (https://github.com/thomaskf/cmpMatrix, for calculating the root-mean-square difference between distance matrixs)
+  - cmpMatrix (https://github.com/thomaskf/cmpMatrix, for calculating the root-mean-square difference between distance matrixs) (**not use in the manuscript**)
 
   **Software to compare** (can add or remove any software)
   - Decenttree (https://github.com/iqtree/decenttree)
