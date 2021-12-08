@@ -1,5 +1,5 @@
 # A plan for benchmarking decentTree
-Compare the running time, memory usage and accuracy of different neighbor-joining software with different input alignments and threads.
+Compare the running time, memory usage and accuracy of different neighbour-joining software with different input alignments and threads.
 
 ## Requirments
   **Required**
