@@ -1,4 +1,4 @@
-	datasets	softwares	threads	sequences	Memory_Usage	Wall-clock_Time	Log_Likelihood
+	Datasets	Softwares	Threads	Sequences	Memory_Usage	Wall-clock_Time	Log_Likelihood
 0	COVID19	DT@BIONJ-R	1	1000	28.108	0.81	-82413.4497			
 1	COVID19	DT@BIONJ-R	32	1000	27.26	0.95	-82502.6802			
 2	COVID19	DT@BIONJ-R	1	2000	98.34	3.62	-116447.9123			
