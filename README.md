@@ -278,7 +278,7 @@ iqtree2 --epsilon 1 -s $alignmentFile -te $treeFile -m JC --prefix $outputPrefix
 
 ### 4.2 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination (haven't used in the manuscript)
 To compare the accuracy of different programs, we calculated the the root-mean-square between original input and the distance matrix of output tree result of each combination. 
-| Notably, this is based on XXXXXXXXXXXXXXXXXXXX
+
 
 Firstly, we converted the tree to distance matrix with `IQ-TREE`
 
