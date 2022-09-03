@@ -255,6 +255,29 @@ timeout -t $timelimit -m $memlimit \
             $outputFile
 ```
 
+### 3.6 FastTree
+```
+# 12 hours
+timelimit=43200
+# 500 GB
+memlimit=500000000
+
+# inputFile is the multiple sequence alignment file
+inputFile=$1
+# outputFile is the output result (in .newick format)
+outputFile=$2
+# timelog is the log file of elapsed time and memory useage
+timelog=$3
+# threads is how many threads you want to use in this run
+threads=$4
+
+
+export OMP_NUM_THREADS=$threads
+timeout -t $timelimit -m $memlimit \
+    /usr/bin/time -o $timelog -v \
+        FastTreeMP -nt -noml -out $outputFile $inputFile 
+
+```
 
 ## 4 Comparison
 
@@ -276,7 +299,15 @@ outputPrefix=$3
 iqtree2 --epsilon 1 -s $alignmentFile -te $treeFile -m JC --prefix $outputPrefix
 ```
 
-### 4.2 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination (haven't used in the manuscript)
+### 4.2 Calculate the Robinson-Foulds (RF) distance between the different trees inferred on each dataset
+
+```
+# treeFile is the tree output of each combination
+iqtree2 -rf $treeFile1 $treeFile2
+```
+
+
+### 4.3 Calculate the root-mean-square between original input and the distance matrix of output tree result of each combination (haven't used in the manuscript)
 To compare the accuracy of different programs, we calculated the the root-mean-square between original input and the distance matrix of output tree result of each combination. 
 
 
