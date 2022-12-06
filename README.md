@@ -14,7 +14,7 @@ Compare the running time, memory usage and accuracy of different neighbour-joini
   - RapidNJ v2.3.2 (https://birc.au.dk/software/rapidnj/)
   - Quicktree v2.5 (single threads) (https://github.com/khowe/quicktree)
   - BioNJ (single threads) (http://www.atgc-montpellier.fr/bionj/)
-
+  - FastTree (http://www.microbesonline.org/fasttree/)
 
 
 ##  Input format
@@ -28,6 +28,7 @@ The supported input format of each software
 | FastME  | ?  | Yes | Yes, in converting fasta to distance matrix step |
 | BioNJ  | No  | Yes | No |
 | Quicktree  | .sth  | Yes | No |
+| FastTree | .fasta(.gz) | Yes | Yes |
 
 >MSA: Multiple sequence alignment; .sth: Stockholm format. 
 
