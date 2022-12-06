@@ -8,7 +8,7 @@ Compare the running time, memory usage and accuracy of different neighbour-joini
   - IQ-TREE2 (https://github.com/iqtree/iqtree2, for converting the .newick format to distance matrix)
   - cmpMatrix (https://github.com/thomaskf/cmpMatrix, for calculating the root-mean-square difference between distance matrixs) (**not use in the manuscript**)
 
-  **Programs to compare** (can add or remove any software)
+  **Programs to compare** 
   - Decenttree (https://github.com/iqtree/decenttree)
   - FastME v2.1.6.2 (http://www.atgc-montpellier.fr/fastme/)
   - RapidNJ v2.3.2 (https://birc.au.dk/software/rapidnj/)
