@@ -276,7 +276,7 @@ threads=$4
 export OMP_NUM_THREADS=$threads
 timeout -t $timelimit -m $memlimit \
     /usr/bin/time -o $timelog -v \
-        FastTreeMP -nt -noml -out $outputFile $inputFile 
+        FastTreeMP -nt -noml -nome -nosupport -fastest -out $outputFile $inputFile 
 
 ```
 
