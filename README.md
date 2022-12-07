@@ -280,7 +280,7 @@ timeout -t $timelimit -m $memlimit \
 
 ```
 
-### 3.7 Compare the performance of different implementations with NNI/SPR
+### 3.7 Compare the performance of different implementations with NNIs/SPRs
 ```
 # using the 4,000 sequence alignment as the test sample, and compare three implementation: DecentTree, FastME and FastTree 
 # run FastME with SPRs
